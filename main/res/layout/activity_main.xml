@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="firebase.algo.login.login_signup.com.android.login_signup.MainActivity">
+
+
+    <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_new_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            />
+
+
+        <Button
+            android:id="@+id/signin"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="SignIn"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            />
+
+
+
+        <Button
+            android:id="@+id/newuser"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@null"
+            android:text="Create new account"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+</LinearLayout>
