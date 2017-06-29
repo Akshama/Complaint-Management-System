@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "878860695117",
+    "firebase_url": "https://logincms-ca793.firebaseio.com",
+    "project_id": "logincms-ca793",
+    "storage_bucket": "logincms-ca793.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878860695117:android:1565ca9f0234f8e8",
+        "android_client_info": {
+          "package_name": "com.tcs.logincms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878860695117-1fgon4m5f7d02935kugkgaj0bf90lp0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFv9wc4Ir7Uglz0g4IMEZdQ61UBe2ubR0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
