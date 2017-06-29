@@ -18,6 +18,9 @@ public class LoginDataBaseAdapter
 
     static final String DATABASE_CREATE_A = "create table "+"A_LOGIN"+
             "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text) ";
+
+    static final String DATABASE_CREATE_E = "create table "+"E_LOGIN"+
+            "( " +"ID"+" integer  autoincrement,"+ "NAME  text, EMAILID text, EMPID text, PASSWORD text, DEPARTMENT text) ";
     // Variable to hold the database instance
     public  SQLiteDatabase db;
     // Context of the application using the database.
@@ -56,15 +59,18 @@ public class LoginDataBaseAdapter
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
 
-    public void insertEntryA()
+    public void insertEntryE(String name,String emailid,String empid,String pass,String dept)
     {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
-        newValues.put("USERNAME", "admin");
-        newValues.put("PASSWORD","admin");
+        newValues.put("NAME", name);
+        newValues.put("EMAILID", emailid);
+        newValues.put("EMPID", empid);
+        newValues.put("PASSWORD",pass);
+        newValues.put("DEPARTMENT", dept);
 
         // Insert the row into your table
-        db.insert("A_LOGIN", null, newValues);
+        db.insert("E_LOGIN", null, newValues);
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
     public int deleteEntry(String UserName)
