@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if(item.equals("Administrator"))
                 {
                      storedPassword=loginDataBaseAdapter.getSingleEntryA(userName);
+<<<<<<< HEAD
                     // check if the Stored password matches with  Password entered by user
                     if(password.equals(storedPassword))
                     {
@@ -113,10 +114,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     {
                         Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
                     }
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
                 }
                 else if(item.equals("User"))
                 {
                      storedPassword=loginDataBaseAdapter.getSingleEntry(userName);
+<<<<<<< HEAD
 
                     // check if the Stored password matches with  Password entered by user
                     if(password.equals(storedPassword))
@@ -157,6 +161,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
                 }
 
+=======
+                }
+                else
+                {
+                    storedPassword=loginDataBaseAdapter.getSingleEntry(userName);
+                }
+                // check if the Stored password matches with  Password entered by user
+                if(password.equals(storedPassword))
+                {
+                    //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                    //intent.putExtra("fullname",_fname);
+                    //intent.putExtra("email",_email);
+                    startActivity(intent);
+                    // Intent intentWelcome=new Intent(getApplicationContext(),Welcome.class);
+                    // startActivity(intentWelcome);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
+                }
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
             }
         });
 

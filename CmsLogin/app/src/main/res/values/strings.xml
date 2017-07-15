@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">CMS</string>
     <string name="title_activity_admin">AdminLogin</string>
+<<<<<<< HEAD
     <string name="title_activity_engineer__navigation">Engineer_Navigation</string>
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

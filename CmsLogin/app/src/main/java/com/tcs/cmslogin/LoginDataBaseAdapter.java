@@ -6,12 +6,19 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
     static final int DATABASE_VERSION = 7;
+=======
+public class LoginDataBaseAdapter
+{
+    static final String DATABASE_NAME = "login.db";
+    static final int DATABASE_VERSION = 2;
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -22,7 +29,11 @@ public class LoginDataBaseAdapter
             "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text) ";
 
     static final String DATABASE_CREATE_E = "create table "+"E_LOGIN"+
+<<<<<<< HEAD
             "( " + "EMPID text primary key,NAME  text, EMAILID text,  PASSWORD text, DEPARTMENT text) ";
+=======
+            "( " +"ID"+" integer  autoincrement,"+ "NAME  text, EMAILID text, EMPID text, PASSWORD text, DEPARTMENT text) ";
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     // Variable to hold the database instance
     public  SQLiteDatabase db;
     // Context of the application using the database.
@@ -61,7 +72,11 @@ public class LoginDataBaseAdapter
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
 
+<<<<<<< HEAD
     public void insertEntryE(String empid,String name,String emailid,String pass,String dept)
+=======
+    public void insertEntryE(String name,String emailid,String empid,String pass,String dept)
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
@@ -97,6 +112,7 @@ public class LoginDataBaseAdapter
         return password;
     }
 
+<<<<<<< HEAD
 
     /******** METHOD TO GET THE ID OF EMPLOYEE ***********/
 
@@ -168,6 +184,8 @@ public class LoginDataBaseAdapter
     }
 
 
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     public String getSingleEntryA(String userName)
     {
         Cursor cursor=db.query("A_LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
@@ -181,6 +199,7 @@ public class LoginDataBaseAdapter
         cursor.close();
         return password;
     }
+<<<<<<< HEAD
 
     public String getSingleEntryE(String userName)
     {
@@ -197,6 +216,8 @@ public class LoginDataBaseAdapter
     }
 
 
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     public void  updateEntry(String userName,String password)
     {
         // Define the updated row content.
@@ -208,6 +229,7 @@ public class LoginDataBaseAdapter
         String where="USERNAME = ?";
         db.update("LOGIN",updatedValues, where, new String[]{userName});
     }
+<<<<<<< HEAD
 
     public void  updateEntryA(String password)
     {
@@ -221,4 +243,6 @@ public class LoginDataBaseAdapter
         db.update("A_LOGIN",updatedValues, where, new String[]{"admin"});
     }
 
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 }

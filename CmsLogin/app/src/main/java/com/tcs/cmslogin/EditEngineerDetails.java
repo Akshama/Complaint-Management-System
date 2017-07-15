@@ -1,25 +1,32 @@
 package com.tcs.cmslogin;
 
 import android.app.Fragment;
+<<<<<<< HEAD
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 
 /**
  * Created by hema on 27-Jun-17.
  */
 
+<<<<<<< HEAD
 public class EditEngineerDetails extends Fragment implements View.OnClickListener {
     View myView;
     TableLayout stk;
@@ -143,11 +150,16 @@ public class EditEngineerDetails extends Fragment implements View.OnClickListene
         startActivity(in);
     }
 
+=======
+public class EditEngineerDetails extends Fragment {
+    View myView;
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+<<<<<<< HEAD
         ((AdminActivity) getActivity()).setActionBarTitle("Engineer Details");
 
         myView=inflater.inflate(R.layout.editengineerdetails,container,false);
@@ -170,6 +182,9 @@ public class EditEngineerDetails extends Fragment implements View.OnClickListene
                 // do something
             }
         });*/
+=======
+        myView=inflater.inflate(R.layout.editengineerdetails,container,false);
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
         return myView;
     }
 }

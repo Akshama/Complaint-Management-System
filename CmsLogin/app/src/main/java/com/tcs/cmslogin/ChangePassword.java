@@ -3,6 +3,7 @@ package com.tcs.cmslogin;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,22 +11,34 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+=======
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 
 /**
  * Created by hema on 28-Jun-17.
  */
 
+<<<<<<< HEAD
 public class ChangePassword extends Fragment {
 
     View myView;
     Button change_passw;
     LoginDataBaseAdapter loginDataBaseAdapter;
     TextView current_pass,new_pass,confirm_pass;
+=======
+public class ChangePassword extends Fragment{
+
+    View myView;
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+<<<<<<< HEAD
         ((AdminActivity) getActivity()).setActionBarTitle("ChangePassword");
 
         // create a instance of SQLite Database
@@ -60,4 +73,9 @@ public class ChangePassword extends Fragment {
 
 
 
+=======
+        myView=inflater.inflate(R.layout.changepassword,container,false);
+        return myView;
+    }
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
 }

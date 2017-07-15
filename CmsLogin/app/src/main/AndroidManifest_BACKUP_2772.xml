@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+<<<<<<< HEAD
+=======
 
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +24,24 @@
         <activity
             android:name=".AdminActivity"
             android:label="@string/title_activity_admin"
+<<<<<<< HEAD
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Engineer_Navigation"
+            android:label="@string/title_activity_engineer__navigation"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <!--<activity android:name=".AddEngineerDetails" />-->
+        <activity android:name=".Edit"></activity>
+=======
             android:theme="@style/AppTheme.NoActionBar"></activity>
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
     </application>
 
 </manifest>
