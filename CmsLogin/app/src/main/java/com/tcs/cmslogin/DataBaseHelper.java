@@ -22,6 +22,14 @@ public class DataBaseHelper extends SQLiteOpenHelper
         try {
             _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_A);
             _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+           _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_E);
+=======
+            _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_E);
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
             //_db.execSQL("INSERT INTO A_LOGIN VALUES ('admin','admin')");
 
             ContentValues values = new ContentValues();

@@ -96,10 +96,78 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if(item.equals("Administrator"))
                 {
                      storedPassword=loginDataBaseAdapter.getSingleEntryA(userName);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                    // check if the Stored password matches with  Password entered by user
+                    if(password.equals(storedPassword))
+                    {
+                        //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                        //intent.putExtra("fullname",_fname);
+                        //intent.putExtra("email",_email);
+                        startActivity(intent);
+                        finish();
+                        // Intent intentWelcome=new Intent(getApplicationContext(),Welcome.class);
+                        // startActivity(intentWelcome);
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
+                    }
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
                 }
                 else if(item.equals("User"))
                 {
                      storedPassword=loginDataBaseAdapter.getSingleEntry(userName);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+                    // check if the Stored password matches with  Password entered by user
+                    if(password.equals(storedPassword))
+                    {
+                        //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                        //Intent intent = new Intent(MainActivity.this, EngineerActivity.class);
+                        //intent.putExtra("fullname",_fname);
+                        //intent.putExtra("email",_email);
+                        //startActivity(intent);
+                        // Intent intentWelcome=new Intent(getApplicationContext(),Welcome.class);
+                        // startActivity(intentWelcome);
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else
+                {
+                    storedPassword=loginDataBaseAdapter.getSingleEntryE(userName);
+
+                    // check if the Stored password matches with  Password entered by user
+                    if(password.equals(storedPassword))
+                    {
+                        //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, Engineer_Navigation.class);
+                        //intent.putExtra("fullname",_fname);
+                        //intent.putExtra("email",_email);
+                        startActivity(intent);
+                        // Intent intentWelcome=new Intent(getApplicationContext(),Welcome.class);
+                        // startActivity(intentWelcome);
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+=======
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
                 }
                 else
                 {
@@ -121,6 +189,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 {
                     Toast.makeText(MainActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
                 }
+<<<<<<< HEAD
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
             }
         });
 

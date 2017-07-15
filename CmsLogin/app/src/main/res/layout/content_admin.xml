@@ -10,6 +10,15 @@
 
     <FrameLayout
         android:id="@+id/content_frame"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        android:layout_width="400dp"
+        android:layout_height="600dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"></FrameLayout>
+=======
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
         android:layout_width="368dp"
         android:layout_height="495dp"
         >
@@ -21,6 +30,10 @@
             android:layout_height="wrap_content"
             android:text="Hello World"
              />
+<<<<<<< HEAD
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
 
 
 </android.support.constraint.ConstraintLayout>

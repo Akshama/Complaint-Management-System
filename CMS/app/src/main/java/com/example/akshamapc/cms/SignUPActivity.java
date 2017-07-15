@@ -41,13 +41,21 @@ public class SignUPActivity extends Activity
                 // check if any of the fields are vaccant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals(""))
                 {
+<<<<<<< HEAD
                     Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
+=======
+                    Toast.makeText(getApplicationContext(), "Field Vacant", Toast.LENGTH_LONG).show();
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
                     return;
                 }
                 // check if both password matches
                 if(!password.equals(confirmPassword))
                 {
+<<<<<<< HEAD
                     Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_LONG).show();
+=======
+                    Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
                     return;
                 }
                 else

@@ -23,14 +23,30 @@ public class AdminActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+<<<<<<< HEAD
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+=======
+<<<<<<< HEAD
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+=======
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
+<<<<<<< HEAD
         });
+=======
+<<<<<<< HEAD
+        });*/
+=======
+        });
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,6 +75,16 @@ public class AdminActivity extends AppCompatActivity
         return true;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
+
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -87,6 +113,24 @@ public class AdminActivity extends AppCompatActivity
         } else if (id == R.id.nav_edit_engineer_details) {
             getFragmentManager().beginTransaction().replace(R.id.content_frame,new EditEngineerDetails()).commit();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        } else if (id == R.id.nav_add_engineer_details) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,new AddEngineerDetails()).commit();
+        }
+
+        else if (id == R.id.nav_assign_complaints) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,new AssignComplaints()).commit();
+        }
+         else if (id == R.id.nav_change_password) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,new ChangePassword()).commit();
+        }
+        else if (id == R.id.nav_logout) {
+            getFragmentManager().beginTransaction().replace(R.id.content_frame,new Logout()).commit();
+       }
+=======
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
         } else if (id == R.id.nav_assign_complaints) {
             getFragmentManager().beginTransaction().replace(R.id.content_frame,new AssignComplaints()).commit();
         }
@@ -95,6 +139,10 @@ public class AdminActivity extends AppCompatActivity
         } //else if (id == R.id.nav_send) {
 
        // }
+<<<<<<< HEAD
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

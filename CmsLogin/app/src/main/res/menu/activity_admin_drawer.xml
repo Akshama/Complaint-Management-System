@@ -15,6 +15,16 @@
 
             android:title="Edit Engineer Details" />
         <item
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            android:id="@+id/nav_add_engineer_details"
+
+            android:title="Add Engineer Details" />
+        <item
+=======
+>>>>>>> 98b49386e5af71666507a0a2b6b99263b99d4c7b
+>>>>>>> 8af09e25c21a0eeb51c1f2e971df6bb50bfa8f60
             android:id="@+id/nav_change_password"
 
             android:title="Change Password" />
