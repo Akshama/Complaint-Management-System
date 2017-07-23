@@ -23,14 +23,40 @@ public class DataBaseHelper extends SQLiteOpenHelper
             _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_A);
             _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE);
            _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_E);
+            _db.execSQL(LoginDataBaseAdapter.DATABASE_CREATE_COMPLAINT);
+            _db.execSQL(LoginDataBaseAdapter.DATABASE_ASSIGN_COMPLAINT);
             //_db.execSQL("INSERT INTO A_LOGIN VALUES ('admin','admin')");
 
             ContentValues values = new ContentValues();
             values.put("USERNAME", "admin");
             values.put("PASSWORD", "admin");
 
+            ContentValues eng1 = new ContentValues();
+            eng1.put("EMPID", "CMS01");
+            eng1.put("NAME", "Ramesh Khan");
+            eng1.put("EMAILID", "ramesh@tcs.com");
+            eng1.put("PASSWORD", "CMS01");
+            eng1.put("DEPARTMENT", "Software");
+
+            ContentValues eng2 = new ContentValues();
+            eng2.put("EMPID", "CMS02");
+            eng2.put("NAME", "Hina Sharma");
+            eng2.put("EMAILID", "s_hina@tcs.com");
+            eng2.put("PASSWORD", "CMS02");
+            eng2.put("DEPARTMENT", "Software");
+
+            ContentValues comp1 = new ContentValues();
+            comp1.put("COMPLAINT_ID", "01");
+            comp1.put("NAME", "Rahul");
+            comp1.put("EMAILID", "r_ahul@gmail.com");
+            comp1.put("COMPLAINT", "XYZ device is not working");
+            comp1.put("CONTACT_NO", "9867896756");
+
 // Inserting Row
             _db.insert("A_LOGIN", null, values);
+            _db.insert("E_LOGIN", null, eng1);
+            _db.insert("E_LOGIN", null, eng2);
+            _db.insert("COMPLAINT_TABLE", null, comp1);
         }
         catch(SQLException e)
         {

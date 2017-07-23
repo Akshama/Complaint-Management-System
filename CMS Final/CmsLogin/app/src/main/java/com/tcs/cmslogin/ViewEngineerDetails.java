@@ -19,78 +19,70 @@ import java.util.ArrayList;
  * Created by hema on 27-Jun-17.
  */
 
-public class ViewComplaints extends Fragment  {
-
+public class ViewEngineerDetails extends Fragment  {
     View myView;
+    TableLayout stk;
+    TableRow tr;
     LoginDataBaseAdapter loginDataBaseAdapter;
     TextView tv0;
     String id=null;
-
+    int count=0;
     ArrayList<TextView> tv=new ArrayList<>();
 
     public void addHeaders(){
 
         /** Create a TableRow dynamically **/
-        TableLayout stk = (TableLayout) myView.findViewById(R.id.t_l1);
+        TableLayout stk = (TableLayout) myView.findViewById(R.id.t_l);
 
         TableRow tbrow0 = new TableRow(this.getActivity());
 
         TextView tv0 = new TextView(this.getActivity());
-        tv0.setText("COMPLAINT ID");
+        tv0.setText(" Employee-Id ");
         tv0.setTextColor(Color.BLACK);
-        tv0.setPadding(20,20,20,20);
+        tv0.setPadding(30,30,30,30);
         tv0.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv0);
 
         TextView tv1 = new TextView(this.getActivity());
-        tv1.setText("NAME");
+        tv1.setText(" Name ");
         tv1.setTextColor(Color.BLACK);
-        tv1.setPadding(10,20,20,20);
+        tv1.setPadding(30,30,30,30);
         tv1.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv1);
 
         TextView tv2 = new TextView(this.getActivity());
-        tv2.setText("COMPLAINT");
+        tv2.setText(" Department ");
         tv2.setTextColor(Color.BLACK);
-        tv2.setPadding(20,20,10,20);
+        tv2.setPadding(30,30,30,30);
         tv2.setTypeface(null, Typeface.BOLD);
         tbrow0.addView(tv2);
-
-        TextView tv3 = new TextView(this.getActivity());
-        tv3.setText("ENGINEER ID");
-        tv3.setTextColor(Color.BLACK);
-        tv3.setPadding(10,20,20,20);
-        tv3.setTypeface(null, Typeface.BOLD);
-        tbrow0.addView(tv3);
 
         stk.addView(tbrow0, new TableLayout.LayoutParams(
                 TableRow.LayoutParams.FILL_PARENT,
                 TableRow.LayoutParams.WRAP_CONTENT));
 
         addData();
+           }
 
-    }
+    public void addData()
+    {
+        ArrayList<String> empid=loginDataBaseAdapter.getEmpId();
+        ArrayList<String> empname=loginDataBaseAdapter.getEmpName();
+        ArrayList<String> empdept=loginDataBaseAdapter.getEmpDept();
 
-    public void addData() {
-        ArrayList<String> compid = loginDataBaseAdapter.getCompId();
-        ArrayList<String> compname = loginDataBaseAdapter.getCompName();
-        ArrayList<String> complaint = loginDataBaseAdapter.getComplaint();
-        ArrayList<String> assign_empid = loginDataBaseAdapter.getAssigned_EmpId();
-
-        if (compid==null)
+        if(empid==null)
         {
-        }
 
-        else
-            {
-            int i = compid.size() - 1;
+        }
+        else {
+            int i = empid.size() - 1;
             int j = 0;
-            TableLayout stk = (TableLayout) myView.findViewById(R.id.t_l1);
+            TableLayout stk = (TableLayout) myView.findViewById(R.id.t_l);
             while (i >= 0) {
                 TableRow tbrow0 = new TableRow(this.getActivity());
 
                 tv0 = new TextView(this.getActivity());
-                id = compid.get(j);
+                id = empid.get(j);
 
                 tv.add(tv0);
                 //tv.get(j).setTag(j);
@@ -98,38 +90,19 @@ public class ViewComplaints extends Fragment  {
                 tv0.setText(id);
                 tv0.setTextColor(Color.BLACK);
                 tv0.setPadding(30, 30, 30, 30);
-
-
                 tbrow0.addView(tv0);
 
                 TextView tv1 = new TextView(this.getActivity());
-                tv1.setText(compname.get(j));
+                tv1.setText(empname.get(j));
                 tv1.setTextColor(Color.BLACK);
-                tv1.setPadding(10, 20, 20, 20);
+                tv1.setPadding(30, 30, 30, 30);
                 tbrow0.addView(tv1);
 
                 TextView tv2 = new TextView(this.getActivity());
-                tv2.setText(complaint.get(j));
+                tv2.setText(empdept.get(j));
                 tv2.setTextColor(Color.BLACK);
-                tv2.setPadding(30, 30, 10, 30);
-
-                //tv2.setLines(3);
-                tv2.setWidth(0);
+                tv2.setPadding(30, 30, 30, 30);
                 tbrow0.addView(tv2);
-
-                TextView tv3 = new TextView(this.getActivity());
-                if(assign_empid==null)
-                {
-                    tv3.setText("Not Assigned");
-                }
-                else {
-                    tv3.setText(assign_empid.get(j));
-                }
-                tv3.setTextColor(Color.BLACK);
-                tv3.setPadding(50, 30, 10, 30);
-
-                //tv2.setLines(3);
-                tbrow0.addView(tv3);
 
                 j++;
                 i--;
@@ -138,22 +111,37 @@ public class ViewComplaints extends Fragment  {
                         TableRow.LayoutParams.FILL_PARENT,
                         TableRow.LayoutParams.WRAP_CONTENT));
             }
-
         }
-    }
 
+      }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        ((AdminActivity) getActivity()).setActionBarTitle("View Complaints");
-        myView=inflater.inflate(R.layout.viewcomplaints,container,false);
+        ((AdminActivity) getActivity()).setActionBarTitle("Engineer Details");
 
+        myView=inflater.inflate(R.layout.viewengineerdetails,container,false);
+
+        // create a instance of SQLite Database
         loginDataBaseAdapter=new LoginDataBaseAdapter(getActivity());
-        addHeaders();
+        //loginDataBaseAdapter=loginDataBaseAdapter.open();
 
+       // tl = (TableLayout)myView.findViewById(R.id.t_l);
+        addHeaders();
+       // addData();
+        /*Button add=(Button)myView.findViewById(R.id.add);
+
+        add.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //Intent in=new Intent(ViewEngineerDetails.this,AddEngineerDetails.class);
+                // do something
+            }
+        });*/
         return myView;
     }
 }

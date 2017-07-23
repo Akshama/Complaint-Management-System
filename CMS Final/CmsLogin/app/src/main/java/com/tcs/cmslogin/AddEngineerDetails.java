@@ -2,9 +2,7 @@ package com.tcs.cmslogin;
 
 import android.app.Fragment;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +30,10 @@ public class AddEngineerDetails extends Fragment {
         loginDataBaseAdapter=loginDataBaseAdapter.open();
 
         add=(Button)myView.findViewById(R.id.add);
-        name=(TextView)myView.findViewById(R.id.name);
+        name=(TextView)myView.findViewById(R.id.eng_name);
         dept=(TextView)myView.findViewById(R.id.dept);
         eid=(TextView)myView.findViewById(R.id.eid);
-        emailid=(TextView)myView.findViewById(R.id.emailid);
+        emailid=(TextView)myView.findViewById(R.id.e_id);
 
 
 

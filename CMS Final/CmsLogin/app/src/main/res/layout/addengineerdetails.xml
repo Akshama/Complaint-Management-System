@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/eg">
+    android:background="@drawable/edit">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:fontFamily="georgia"
         android:text="Add New Engineer"
@@ -16,10 +14,13 @@
         android:textAllCaps="true"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:layout_marginStart="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/eng_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -35,14 +36,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/eng_name"
         android:layout_marginTop="31dp"
         android:ems="10"
         android:hint="Employee ID"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/emailid"
+        android:id="@+id/e_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/eid"
@@ -56,8 +57,8 @@
         android:id="@+id/dept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/emailid"
-        android:layout_below="@+id/emailid"
+        android:layout_alignStart="@+id/eng_name"
+        android:layout_below="@+id/e_id"
         android:layout_marginTop="39dp"
         android:ems="10"
         android:hint="Enter Department"
@@ -67,8 +68,11 @@
         android:id="@+id/add"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:background="?attr/colorButtonNormal"
+        android:text="Add"
+        android:textAlignment="center"
+        android:textSize="15sp"
         android:layout_below="@+id/dept"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:text="Add" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

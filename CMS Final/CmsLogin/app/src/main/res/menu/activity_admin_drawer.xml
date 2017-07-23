@@ -15,6 +15,10 @@
 
             android:title="Edit Engineer Details" />
         <item
+            android:id="@+id/nav_view_engineer_details"
+
+            android:title="View Engineer Details" />
+        <item
             android:id="@+id/nav_add_engineer_details"
 
             android:title="Add Engineer Details" />

@@ -46,7 +46,10 @@ public class ChangePassword extends Fragment {
             @Override
             public void onClick(View myview){
                 Log.d("going","gone");
-                if(!confirm_pass.getText().toString().equals(new_pass.getText().toString()))
+                String check=loginDataBaseAdapter.getSingleEntryA("admin");
+                if(!current_pass.getText().toString().equals(check))
+                    Toast.makeText(getActivity(), "Please Enter Correct Password", Toast.LENGTH_LONG).show();
+                else if(!confirm_pass.getText().toString().equals(new_pass.getText().toString()))
                     Toast.makeText(getActivity(), "Password does not match", Toast.LENGTH_LONG).show();
                 else
                     loginDataBaseAdapter.updateEntryA(confirm_pass.getText().toString());
