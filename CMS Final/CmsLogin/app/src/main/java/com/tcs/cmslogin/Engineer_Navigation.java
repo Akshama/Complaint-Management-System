@@ -1,6 +1,7 @@
 package com.tcs.cmslogin;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -75,11 +76,19 @@ public class Engineer_Navigation extends AppCompatActivity
         switch(id)
         {
             case R.id.nav_profile:
+                Intent intent = getIntent();
+                String empid = intent.getStringExtra("ID");
+                Intent i = new Intent(Engineer_Navigation.this, Engineer_Navigation.class);
+                i.putExtra("ID1",empid);
                 fragment = new Profile();
                 break;
             case R.id.nav_admin:
                 fragment = new ContactAdmin();
                 break;
+            case R.id.nav_view:
+                fragment = new ViewAssignedComplaints();
+                break;
+
         }
         if (fragment!=null)
         {

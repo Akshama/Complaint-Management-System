@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 12;
+    static final int DATABASE_VERSION = 14;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -105,6 +105,29 @@ public class LoginDataBaseAdapter
         return password;
     }
 
+
+    /******** METHOD TO GET THE NAME OF ENGINEER ***********/
+
+    public String getname(String id)
+    {
+        db=dbHelper.getReadableDatabase();
+        String name =new String();
+        Cursor cursor;
+        cursor=db.query("E_LOGIN", null, " EMPID=?", new String[]{id}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            name =cursor.getString(cursor.getColumnIndex("NAME"));
+            //complaint.add(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return name;
+    }
 
     /******** METHOD TO GET THE ID OF EMPLOYEE ***********/
 
