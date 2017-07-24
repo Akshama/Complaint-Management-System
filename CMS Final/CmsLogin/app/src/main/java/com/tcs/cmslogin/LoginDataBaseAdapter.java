@@ -435,6 +435,7 @@ public ArrayList<String> getCompId()
     }
 
 
+
     public void  updateEntry(String userName,String password)
     {
         // Define the updated row content.
@@ -457,6 +458,17 @@ public ArrayList<String> getCompId()
 
         String where="USERNAME = ?";
         db.update("A_LOGIN",updatedValues, where, new String[]{"admin"});
+    }
+    public void  updateEntryE_pass(String userName,String password)
+    {
+        // Define the updated row content.
+        ContentValues updatedValues = new ContentValues();
+        // Assign values for each row.
+
+        updatedValues.put("PASSWORD",password);
+
+        String where="EMPID = ?";
+        db.update("E_LOGIN",updatedValues, where, new String[]{userName});
     }
 
     public void  updateEntryE(String id,String name,String emailid,String department)

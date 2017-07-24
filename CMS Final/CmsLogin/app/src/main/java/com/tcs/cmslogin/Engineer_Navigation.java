@@ -88,6 +88,12 @@ public class Engineer_Navigation extends AppCompatActivity
             case R.id.nav_view:
                 fragment = new ViewAssignedComplaints();
                 break;
+            case R.id.nav_change:
+                fragment = new Engineer_ChangePassword();
+                break;
+            case R.id.nav_logout:
+                Intent in = new Intent(Engineer_Navigation.this, MainActivity.class);
+                startActivity(in);
 
         }
         if (fragment!=null)

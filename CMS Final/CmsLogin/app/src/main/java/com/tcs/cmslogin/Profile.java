@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Profile extends Fragment {
 
-    TextView name,ID, email, dept;
+    TextView name1,ID, email, dept;
     LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -31,37 +31,40 @@ public class Profile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile,container, false);
+        View view = inflater.inflate(R.layout.fragment_enggprofile,container, false);
 
-        name = (TextView) view.findViewById(R.id.editText);
-        ID = (TextView) view.findViewById(R.id.editText1);
-        email = (TextView) view.findViewById(R.id.editText2);
-        dept = (TextView) view.findViewById(R.id.editText3);
+        name1 = (TextView) view.findViewById(R.id.textView8);
+        ID = (TextView) view.findViewById(R.id.textView10);
+        email = (TextView) view.findViewById(R.id.textView11);
+        dept = (TextView) view.findViewById(R.id.textView12);
 
         loginDataBaseAdapter = new LoginDataBaseAdapter(getActivity());
-        Intent i = getActivity().getIntent();
-        String empid = i.getStringExtra("ID1");
+        //Intent i = getActivity().getIntent();
+       // String empid = i.getStringExtra("ID1");
        // String empname = loginDataBaseAdapter.getname(empid);
       //  name.setText(empname);
-       set();
-        return inflater.inflate(R.layout.fragment_profile,container,false);
+       // String TAG = "myApp";
+        ArrayList<String> details1= loginDataBaseAdapter.getDetails("CMS03");
+        if(details1==null){
+            // Log.v(TAG, "NULL");
+        }
+        else
+        {
+            String emp_name = details1.get(0);
+            //  Log.v(TAG, "NOT NULL");
+         //   name1.setText("abc");
+          name1.setText(emp_name);
+            dept.setText(details1.get(1));
+            email.setText(details1.get(2));
+            ID.setText("CMS03");
+
+        }
+        return inflater.inflate(R.layout.fragment_enggprofile,container,false);
     }
 
     public void set()
     {
-        String TAG = "myApp";
-        ArrayList<String> details1= loginDataBaseAdapter.getDetails("CMS03");
-        if(details1==null){
-           // Log.v(TAG, "NULL");
-        }
-        else
-        {
-          //  Log.v(TAG, "NOT NULL");
-            name.setText(details1.get(0));
-            dept.setText(details1.get(1));
-            ID.setText(details1.get(2));
 
-        }
     }
 
 
