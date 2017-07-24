@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 14;
+    static final int DATABASE_VERSION = 17;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -25,7 +25,7 @@ public class LoginDataBaseAdapter
             "( " + "EMPID text primary key,NAME  text, EMAILID text,  PASSWORD text, DEPARTMENT text) ";
 
     static final String DATABASE_CREATE_COMPLAINT = "create table "+"COMPLAINT_TABLE"+
-            "( " + "COMPLAINT_ID text primary key,NAME  text, EMAILID text,  COMPLAINT text, CONTACT_NO text) ";
+            "( " + "COMPLAINT_ID text primary key,NAME  text, EMAILID text,  COMPLAINT text, CONTACT_NO text, COMPLAINT_STATUS text) ";
 
     static final String DATABASE_ASSIGN_COMPLAINT = "create table "+"ASSIGN_COMPLAINT"+
             "( " +"COMPLAINT_ID"+" text primary key ,"+ "ENGINEER_ID  text) ";
@@ -325,6 +325,28 @@ public ArrayList<String> getCompId()
         ArrayList<String> complaint=new ArrayList<>();
         Cursor cursor;
         cursor = db.rawQuery("select COMPLAINT from COMPLAINT_TABLE",null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String name=cursor.getString(cursor.getColumnIndex("COMPLAINT"));
+            complaint.add(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return complaint;
+    }
+
+    /******** METHOD TO GET THE COMPLAINT STATUS ***********/
+    public ArrayList getComplaintStatus()
+    {
+        db=dbHelper.getReadableDatabase();
+        ArrayList<String> complaint=new ArrayList<>();
+        Cursor cursor;
+        cursor = db.rawQuery("select COMPLAINT_STATUS from COMPLAINT_TABLE",null);
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();

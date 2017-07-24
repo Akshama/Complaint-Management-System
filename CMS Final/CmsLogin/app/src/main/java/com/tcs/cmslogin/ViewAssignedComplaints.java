@@ -1,13 +1,12 @@
 package com.tcs.cmslogin;
 
-
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -17,10 +16,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Akshama PC on 23-Jul-17.
+ * Created by hema on 27-Jun-17.
  */
 
-public class ViewAssignedComplaints extends Fragment {
+public class ViewAssignedComplaints extends android.support.v4.app.Fragment {
 
     View myView;
     LoginDataBaseAdapter loginDataBaseAdapter;
@@ -58,7 +57,7 @@ public class ViewAssignedComplaints extends Fragment {
         tbrow0.addView(tv2);
 
         TextView tv3 = new TextView(this.getActivity());
-        tv3.setText("ENGINEER ID");
+        tv3.setText("COMPLAINT STATUS");
         tv3.setTextColor(Color.BLACK);
         tv3.setPadding(10,20,20,20);
         tv3.setTypeface(null, Typeface.BOLD);
@@ -76,7 +75,7 @@ public class ViewAssignedComplaints extends Fragment {
         ArrayList<String> compid = loginDataBaseAdapter.getCompId();
         ArrayList<String> compname = loginDataBaseAdapter.getCompName();
         ArrayList<String> complaint = loginDataBaseAdapter.getComplaint();
-        ArrayList<String> assign_empid = loginDataBaseAdapter.getAssigned_EmpId();
+        ArrayList<String> assign_empid = loginDataBaseAdapter.getComplaintStatus();
 
         if (compid==null)
         {
@@ -119,13 +118,13 @@ public class ViewAssignedComplaints extends Fragment {
                 tbrow0.addView(tv2);
 
                 TextView tv3 = new TextView(this.getActivity());
-                if(assign_empid==null)
-                {
-                    tv3.setText("Not Assigned");
-                }
-                else {
+             //   if(assign_empid==null)
+             //   {
+                 //   tv3.setText("Not Assigned");
+             //   }
+               // else {
                     tv3.setText(assign_empid.get(j));
-                }
+             //   }
                 tv3.setTextColor(Color.BLACK);
                 tv3.setPadding(50, 30, 10, 30);
 
