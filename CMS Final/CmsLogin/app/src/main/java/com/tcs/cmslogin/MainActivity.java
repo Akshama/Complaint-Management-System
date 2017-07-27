@@ -123,10 +123,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     {
                         //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(MainActivity.this, UserActivity.class);
                         //intent.putExtra("fullname",_fname);
                         //intent.putExtra("email",_email);
                         startActivity(intent);
+
+                        //Intent intent = new Intent(MainActivity.this, EngineerActivity.class);
+                        //intent.putExtra("fullname",_fname);
+                        //intent.putExtra("email",_email);
+                        //startActivity(intent);
+
                         // Intent intentWelcome=new Intent(getApplicationContext(),Welcome.class);
                         // startActivity(intentWelcome);
                     }

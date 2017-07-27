@@ -9,10 +9,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
     static final int DATABASE_VERSION = 24;
+
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
@@ -26,7 +28,9 @@ public class LoginDataBaseAdapter
             "( " + "EMPID text primary key,NAME  text, EMAILID text,  PASSWORD text, DEPARTMENT text) ";
 
     static final String DATABASE_CREATE_COMPLAINT = "create table "+"COMPLAINT_TABLE"+
+
             "( " + "COMPLAINT_ID integer primary key autoincrement,NAME  text, EMAILID text,  COMPLAINT text, CONTACT_NO text, COMPLAINT_STATUS text) ";
+
 
     static final String DATABASE_ASSIGN_COMPLAINT = "create table "+"ASSIGN_COMPLAINT"+
             "( " +"COMPLAINT_ID"+" text primary key ,"+ "ENGINEER_ID  text) ";
@@ -69,6 +73,7 @@ public class LoginDataBaseAdapter
         db.insert("LOGIN", null, newValues);
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
+
 
     public void insertEntryC(user_complaint userComplaint)
     {
@@ -156,7 +161,6 @@ public class LoginDataBaseAdapter
         return isPresent;
 
     }
-
 
 
 
@@ -377,7 +381,9 @@ public ArrayList<String> getCompId()
         }
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
+
             String name= String.valueOf(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
+
             comp_id.add(name);
             cursor.moveToNext();
         }
@@ -446,6 +452,7 @@ public ArrayList<String> getCompId()
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
             String name=cursor.getString(cursor.getColumnIndex("COMPLAINT_STATUS"));
+
             complaint.add(name);
             cursor.moveToNext();
         }
@@ -602,6 +609,8 @@ public ArrayList<String> getCompId()
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
 //        updatedValues.put("USERNAME", userName);
+
+        updatedValues.put("USERNAME", name);
 
         updatedValues.put("PASSWORD", newpassword);
 
