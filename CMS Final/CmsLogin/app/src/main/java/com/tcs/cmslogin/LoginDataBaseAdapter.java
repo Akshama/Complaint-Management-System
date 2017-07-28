@@ -33,7 +33,7 @@ public class LoginDataBaseAdapter
 
 
     static final String DATABASE_ASSIGN_COMPLAINT = "create table "+"ASSIGN_COMPLAINT"+
-            "( " +"COMPLAINT_ID"+" text primary key ,"+ "ENGINEER_ID  text) ";
+            "( " +"COMPLAINT_ID"+" integer primary key ,"+ "ENGINEER_ID  text) ";
 
 
     // Variable to hold the database instance
@@ -271,7 +271,7 @@ public class LoginDataBaseAdapter
         return empid;
     }
 
-    /******** METHOD TO GET THE ASSIGNED EMPLOYEE ID ***********/
+    /******** METHOD TO GET THE LIST OF ASSIGNED EMPLOYEE ID ***********/
 
     public ArrayList getAssigned_EmpId()
     {
@@ -371,7 +371,7 @@ public ArrayList<String> getCompId()
     {
         db=dbHelper.getReadableDatabase();
         ArrayList<String> comp_id=new ArrayList<>();
-        comp_id.add("Select Complaint ID");
+        comp_id.add("Select Complaint ID");//to display in textview
         Cursor cursor;
         cursor = db.rawQuery("select COMPLAINT_ID from COMPLAINT_TABLE",null);
         if(cursor.getCount()<1) // UserName Not Exist

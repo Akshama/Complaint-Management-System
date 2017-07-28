@@ -76,6 +76,7 @@ public class ViewComplaints extends Fragment  {
         ArrayList<String> compname = loginDataBaseAdapter.getCompName();
         ArrayList<String> complaint = loginDataBaseAdapter.getComplaint();
         ArrayList<String> assign_empid = loginDataBaseAdapter.getAssigned_EmpId();
+        ArrayList<String> comp_status=loginDataBaseAdapter.getComplaintStatus();
 
         if (compid==null)
         {
@@ -121,6 +122,10 @@ public class ViewComplaints extends Fragment  {
                 if(assign_empid==null)
                 {
                     tv3.setText("Not Assigned");
+                }
+                else if(comp_status.equals("Resolved"))
+                {
+                    tv3.setText("Resolved");
                 }
                 else {
                     tv3.setText(assign_empid.get(j));

@@ -53,9 +53,9 @@
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-        </activity>
+        <!--</activity>-->
         <!--<activity android:name=".AddEngineerDetails" />-->
-        <activity android:name=".Edit"></activity>
+        <!--<activity android:name=".Edit"></activity>-->
     </application>
 
 </manifest>
