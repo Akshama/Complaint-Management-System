@@ -25,7 +25,6 @@
 
 
     <!-- <activity android:name=".AddEngineerDetails" /> -->
-        <activity android:name=".Edit" />
         <activity
             android:name=".UserActivity"
             android:theme="@style/AppTheme.NoActionBar" />

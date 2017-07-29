@@ -123,7 +123,7 @@ public class ViewComplaints extends Fragment  {
                 {
                     tv3.setText("Not Assigned");
                 }
-                else if(comp_status.equals("Resolved"))
+                else if(comp_status.get(j).equalsIgnoreCase("Resolved"))
                 {
                     tv3.setText("Resolved");
                 }

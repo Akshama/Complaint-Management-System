@@ -373,7 +373,7 @@ public ArrayList<String> getCompId()
         ArrayList<String> comp_id=new ArrayList<>();
         comp_id.add("Select Complaint ID");//to display in textview
         Cursor cursor;
-        cursor = db.rawQuery("select COMPLAINT_ID from COMPLAINT_TABLE",null);
+        cursor = db.rawQuery("select COMPLAINT_ID,COMPLAINT_STATUS from COMPLAINT_TABLE",null);
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();
@@ -383,8 +383,9 @@ public ArrayList<String> getCompId()
         for (int i = 0; i < cursor.getCount(); i++) {
 
             String name= String.valueOf(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
-
-            comp_id.add(name);
+            String status= cursor.getString(cursor.getColumnIndex("COMPLAINT_STATUS"));
+            if(!status.equalsIgnoreCase("Resolved"))
+                comp_id.add(name);
             cursor.moveToNext();
         }
         cursor.close();
