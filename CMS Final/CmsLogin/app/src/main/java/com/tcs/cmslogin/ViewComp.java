@@ -37,11 +37,11 @@ public class ViewComp extends AppCompatActivity {
         status=(TextView) findViewById(R.id.status1);
         delete=(Button)findViewById(R.id.submit);
 
-        nam.setText(getIntent().getStringExtra("Name"));
-        email.setText(getIntent().getStringExtra("Email"));
-        phone.setText(getIntent().getStringExtra("Phone"));
-        complaint.setText(getIntent().getStringExtra("Complaint"));
-        status.setText("Pending");
+//        nam.setText(getIntent().getStringExtra("Name"));
+//        email.setText(getIntent().getStringExtra("Email"));
+//        phone.setText(getIntent().getStringExtra("Phone"));
+//        complaint.setText(getIntent().getStringExtra("Complaint"));
+//        status.setText("Pending");
 
 //        String status=loginDataBaseAdapter.getstatus(userComplaintList.get(position).getId());
 //        if(status=="Resolved"){
@@ -53,11 +53,12 @@ public class ViewComp extends AppCompatActivity {
 //
 //        }
 
-        userComplaintList = loginDataBaseAdapter.getcomplaint();
+        userComplaintList = loginDataBaseAdapter.getcomplaint(getIntent().getStringExtra("name"));
         nam.setText(userComplaintList.getName());
         email.setText(userComplaintList.getEmail());
         phone.setText(userComplaintList.getPhone());
         complaint.setText(userComplaintList.getComplaint());
+        status.setText(userComplaintList.getStatus());
 //        if(loginDataBaseAdapter.inComplaint()){if(loginDataBaseAdapter.getstatus(userComplaintList.getId()).equalsIgnoreCase("Resolved")){
 //            status.setText("Resolved");
 //            delete.setVisibility(View.VISIBLE);

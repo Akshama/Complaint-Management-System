@@ -46,24 +46,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
             eng2.put("DEPARTMENT", "Software");
 
 
-//            ContentValues comp1 = new ContentValues();
-////            comp1.put("COMPLAINT_ID", "01");
-//            comp1.put("NAME", "Rahul");
-//            comp1.put("EMAILID", "r_ahul@gmail.com");
-//            comp1.put("COMPLAINT", "XYZ device is not working");
-//            comp1.put("CONTACT_NO", "9867896756");
-//            comp1.put("COMPLAINT_STATUS","Pending");
-//
-//            ContentValues comp2 = new ContentValues();
-////            comp1.put("COMPLAINT_ID", "02");
-//            comp1.put("NAME", "Rohan");
-//            comp1.put("EMAILID", "r_ohan@gmail.com");
-//            comp1.put("COMPLAINT", "Software abruptly stops");
-//            comp1.put("CONTACT_NO", "9867896757");
-//            comp1.put("COMPLAINT_STATUS","Pending");
 
             ContentValues comp1 = new ContentValues();
-            comp1.put("COMPLAINT_ID", "01");
+//            comp1.put("COMPLAINT_ID", "01");
             comp1.put("NAME", "Rahul");
             comp1.put("EMAILID", "r_ahul@gmail.com");
             comp1.put("COMPLAINT", "XYZ device is not working");
@@ -71,7 +56,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
             comp1.put("COMPLAINT_STATUS","Pending");
 
             ContentValues comp2 = new ContentValues();
-            comp1.put("COMPLAINT_ID", "01");
+//            comp1.put("COMPLAINT_ID", "01");
             comp1.put("NAME", "Rohan");
             comp1.put("EMAILID", "r_ohan@gmail.com");
             comp1.put("COMPLAINT", "Software abruptly stops");
@@ -82,10 +67,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
             _db.insert("A_LOGIN", null, values);
             _db.insert("E_LOGIN", null, eng1);
             _db.insert("E_LOGIN", null, eng2);
-//            _db.insert("COMPLAINT_TABLE", null, comp1);
-//            _db.insert("COMPLAINT_TABLE", null, comp2);
             _db.insert("COMPLAINT_TABLE", null, comp1);
             _db.insert("COMPLAINT_TABLE", null, comp2);
+
         }
         catch(SQLException e)
         {

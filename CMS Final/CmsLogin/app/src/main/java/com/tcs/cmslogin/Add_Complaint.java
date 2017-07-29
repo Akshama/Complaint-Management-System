@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Add_Complaint extends AppCompatActivity {
 
@@ -44,23 +45,33 @@ public class Add_Complaint extends AppCompatActivity {
                 Log.d("AAAA",phone1);
                 Log.d("AAAA",complaint1);
 
-                userComplaintList.setName(name1);
-                userComplaintList.setEmail(email1);
-                userComplaintList.setPhone(phone1);
-                userComplaintList.setComplaint(complaint1);
-                userComplaintList.setStatus("Pending");
+                if(name1.equalsIgnoreCase(getIntent().getStringExtra("name"))){
 
-                loginDataBaseAdapter.insertEntryC(userComplaintList);
+                    userComplaintList.setName(name1);
+                    userComplaintList.setEmail(email1);
+                    userComplaintList.setPhone(phone1);
+                    userComplaintList.setComplaint(complaint1);
+                    userComplaintList.setStatus("Pending");
 
-                Intent i= new Intent(Add_Complaint.this,ViewComp.class);
+                    loginDataBaseAdapter.insertEntryC(userComplaintList);
+
+                    Intent i= new Intent(Add_Complaint.this,ViewComp.class);
 //                i.putExtra("Name",name1);
 //                i.putExtra("Email",email1);
 //                i.putExtra("Phone",phone1);
 //                i.putExtra("Complaint",complaint1);
 
-                startActivity(i);
+                    startActivity(i);
+
+                }else{
+
+                    Toast.makeText(getApplicationContext(),"Username doesnot match",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
     }
+
+
 }

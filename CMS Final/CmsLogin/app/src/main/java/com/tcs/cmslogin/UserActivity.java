@@ -17,11 +17,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView name;
     LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class UserActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +51,7 @@ public class UserActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        OutputScreen(R.id.nav_prof);
+//        OutputScreen(R.id.nav_prof);
 
 
     }
@@ -123,11 +126,19 @@ public class UserActivity extends AppCompatActivity
         switch(ID){
 
             case R.id.nav_prof:
-                fragment=new Show_Profile();
+//                fragment=new Show_Profile();
+//                String name2= getIntent().getStringExtra("name");
+
+                Intent i3=new Intent(this,Show_Profile.class);
+//                i3.putExtra("name",name2);
+                startActivity(i3);
                 break;
             case R.id.nav_add:
-                if(!loginDataBaseAdapter.inComplaint()){
-                    startActivity(new Intent(this,Add_Complaint.class));
+                String name1= getIntent().getStringExtra("name");
+                if(!loginDataBaseAdapter.inComplaint(name1)){
+                    Intent i=new Intent(this,Add_Complaint.class);
+                    i.putExtra("name",name1);
+                    startActivity(i);
                 }
                 else{
                     Toast.makeText(this,"You already have a pending complaint",Toast.LENGTH_LONG).show();
@@ -135,8 +146,11 @@ public class UserActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_view:
-                if(loginDataBaseAdapter.inComplaint()){
-                    startActivity(new Intent(this,ViewComp.class));
+                String name= getIntent().getStringExtra("name");
+                if(loginDataBaseAdapter.inComplaint(name)){
+                    Intent i1 = new Intent(this,ViewComp.class);
+                    i1.putExtra("name",name);
+                    startActivity(i1);
                 } else{
                     Toast.makeText(this,"You have not added a complaint yet!",Toast.LENGTH_LONG).show();
                 }

@@ -47,15 +47,13 @@
             android:parentActivityName=".UserActivity"
 
             ></activity>
+        <activity android:name=".Show_Profile"
+            android:parentActivityName=".UserActivity"
 
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            ></activity>
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <!--<activity android:name=".AddEngineerDetails" />-->
-        <activity android:name=".Edit"></activity>
+
+
     </application>
 
 </manifest>

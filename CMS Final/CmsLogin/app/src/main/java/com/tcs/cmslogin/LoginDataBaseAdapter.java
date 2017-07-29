@@ -13,13 +13,13 @@ import java.util.List;
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 24;
+    static final int DATABASE_VERSION = 25;
 
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
     static final String DATABASE_CREATE = "create table "+"LOGIN"+
-            "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text); ";
+            "( " + "USERNAME  text primary key unique,PASSWORD text); ";
 
     static final String DATABASE_CREATE_A = "create table "+"A_LOGIN"+
             "( " +"ID"+" integer primary key autoincrement,"+ "USERNAME  text,PASSWORD text) ";
@@ -33,7 +33,7 @@ public class LoginDataBaseAdapter
 
 
     static final String DATABASE_ASSIGN_COMPLAINT = "create table "+"ASSIGN_COMPLAINT"+
-            "( " +"COMPLAINT_ID"+" text primary key ,"+ "ENGINEER_ID  text) ";
+            "( " +"COMPLAINT_ID"+" integer primary key ,"+ "ENGINEER_ID  text) ";
 
 
     // Variable to hold the database instance
@@ -84,6 +84,7 @@ public class LoginDataBaseAdapter
         newValues.put("EMAILID",userComplaint.getEmail());
         newValues.put("COMPLAINT",userComplaint.getComplaint());
         newValues.put("CONTACT_NO",userComplaint.getPhone());
+        newValues.put("COMPLAINT_STATUS",userComplaint.getStatus());
 
 
         // Insert the row into your table
@@ -92,21 +93,25 @@ public class LoginDataBaseAdapter
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
 
-    public user_complaint getcomplaint(){
+    public user_complaint getcomplaint(String name){
 
         db= dbHelper.getReadableDatabase();
-        Cursor cursor= db.query("COMPLAINT_TABLE",new String[]{"COMPLAINT_ID","NAME","EMAILID","COMPLAINT","CONTACT_NO"},null,null,null,null,null);
+        Cursor cursor= db.query("COMPLAINT_TABLE",new String[]{"COMPLAINT_ID","NAME","EMAILID","COMPLAINT","CONTACT_NO","COMPLAINT_STATUS"},"NAME=?",new String[]{name},null,null,null);
         user_complaint userComplaint1 = new user_complaint();
 
         if(cursor.moveToFirst()) {
 
 
 
-                userComplaint1.setId(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
-                userComplaint1.setName(cursor.getString(cursor.getColumnIndex("NAME")));
-                userComplaint1.setEmail(cursor.getString(cursor.getColumnIndex("EMAILID")));
-                userComplaint1.setComplaint(cursor.getString(cursor.getColumnIndex("COMPLAINT")));
-                userComplaint1.setPhone(cursor.getString(cursor.getColumnIndex("CONTACT_NO")));
+                    userComplaint1.setId(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
+                    userComplaint1.setName(cursor.getString(cursor.getColumnIndex("NAME")));
+                    userComplaint1.setEmail(cursor.getString(cursor.getColumnIndex("EMAILID")));
+                    userComplaint1.setComplaint(cursor.getString(cursor.getColumnIndex("COMPLAINT")));
+                    userComplaint1.setPhone(cursor.getString(cursor.getColumnIndex("CONTACT_NO")));
+                    userComplaint1.setStatus(cursor.getString(cursor.getColumnIndex("COMPLAINT_STATUS")));
+
+
+
 
 
 
@@ -145,15 +150,19 @@ public class LoginDataBaseAdapter
         db.close();
     }
 
-    public boolean inComplaint(){
+    public boolean inComplaint(String name){
         db = dbHelper.getReadableDatabase();
 
         Boolean isPresent=false;
 
-        Cursor cursor=db.query("COMPLAINT_TABLE", new String[]{"COMPLAINT_ID"},null, null, null, null, null);
+        Cursor cursor=db.query("COMPLAINT_TABLE", new String[]{"COMPLAINT_ID"},"NAME=?", new String[]{name}, null, null, null);
 
         if(cursor.moveToFirst()){
-            isPresent=true;
+
+
+                isPresent=true;
+
+
 
         }
         cursor.close();
@@ -412,6 +421,29 @@ public ArrayList<String> getCompId()
         }
         cursor.close();
         return comp_name;
+    }
+
+    /******** METHOD TO GET THE NAME OF USER***********/
+
+    public ArrayList getUserName()
+    {
+        db=dbHelper.getReadableDatabase();
+        ArrayList<String> user_name=new ArrayList<>();
+        Cursor cursor;
+        cursor = db.rawQuery("select USERNAME from LOGIN",null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String name=cursor.getString(cursor.getColumnIndex("USERNAME"));
+            user_name.add(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return user_name;
     }
 
     /******** METHOD TO GET THE COMPLAINT ***********/
