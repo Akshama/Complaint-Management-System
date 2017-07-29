@@ -403,7 +403,8 @@ public ArrayList<String> getCompId()
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();
-            return null;
+            complaintID ="";
+            return complaintID;
         }
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {
@@ -511,6 +512,28 @@ public ArrayList<String> getCompId()
         return complaint;
     }
 
+    public String getSelect_Complaint1(String id)
+    {
+        db=dbHelper.getReadableDatabase();
+        String complaint=new String();
+        Cursor cursor;
+        cursor=db.query("COMPLAINT_TABLE", null, " COMPLAINT_ID=?", new String[]{id}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            complaint ="";
+            return complaint;
+        }
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            complaint=cursor.getString(cursor.getColumnIndex("COMPLAINT"));
+            //complaint.add(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return complaint;
+    }
+
     public String getSelect_ComplaintStatus1(String id)
     {
         db=dbHelper.getReadableDatabase();
@@ -520,7 +543,8 @@ public ArrayList<String> getCompId()
         if(cursor.getCount()<1) // UserName Not Exist
         {
             cursor.close();
-            return null;
+            complaint ="";
+            return complaint;
         }
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); i++) {

@@ -40,7 +40,7 @@ public class E_ViewAssignedComplaints extends Fragment  {
         Intent i = getActivity().getIntent();
         empid1 = i.getStringExtra("ID");
         String compid = loginDataBaseAdapter.getSelect_AssignedCompId(empid1);
-        String compname = loginDataBaseAdapter.getSelect_Complaint(compid);
+        String compname = loginDataBaseAdapter.getSelect_Complaint1(compid);
         String comp_status=loginDataBaseAdapter.getSelect_ComplaintStatus1(compid);
 
 

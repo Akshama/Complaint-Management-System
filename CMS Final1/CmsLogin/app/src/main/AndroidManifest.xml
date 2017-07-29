@@ -43,7 +43,7 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <!-- <activity android:name=".AddEngineerDetails" /> -->
-        <!-- <activity android:name=".Edit"></activity> -->
+
         <activity
             android:name=".E_navigation"
             android:label="@string/title_activity_e_navigation"
