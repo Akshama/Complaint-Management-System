@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD COMPLAINT"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal|center_vertical|center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/n1"
+        android:text="Name:"
+        android:textSize="15sp"
+
+        />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:maxLines="1"
+        android:paddingTop="20dp"
+        android:textSize="20sp"
+        />
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/e1"
+        android:text="Email:"
+        android:textSize="15sp"
+
+        />
+    <EditText
+        android:id="@+id/email_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Id"
+        android:maxLines="1"
+        android:maxLength="100"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/c1"
+        android:text="Complaint:"
+        android:textSize="15sp"
+
+        />
+    <EditText
+        android:id="@+id/complaint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" Complaint:"
+        android:maxLines="1"
+        android:maxLength="100"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/p1"
+        android:text="Phone:"
+        android:textSize="15sp"
+
+        />
+    <EditText
+        android:id="@+id/contact_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contact No."
+        android:inputType="phone"
+        android:textColor="@color/black"
+        android:ems="10"
+        android:maxLength="10"
+        android:paddingTop="20dp"
+        android:textSize="20sp"
+        />
+
+
+
+    <Button
+        android:id="@+id/submit"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPink"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="CREATE COMPLAINT"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        />
+
+
+</LinearLayout>

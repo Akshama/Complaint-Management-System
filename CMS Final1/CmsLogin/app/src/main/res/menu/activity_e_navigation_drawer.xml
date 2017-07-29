@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_e_profile"
+
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_e_view"
+
+            android:title="View Complaints" />
+        <item
+            android:id="@+id/nav_e_update"
+
+            android:title="Update Status" />
+        <item
+            android:id="@+id/nav_e_contactclient"
+
+            android:title="Contact Client" />
+
+        <item
+            android:id="@+id/nav_e_contactadmin"
+
+            android:title="Contact Admin" />
+
+        <item
+            android:id="@+id/nav_e_change"
+
+            android:title="Change Password" />
+        <item
+            android:id="@+id/nav_e_logout"
+
+            android:title="Logout" />
+    </group>
+
+
+
+</menu>
