@@ -22,20 +22,23 @@ import static android.text.TextUtils.isEmpty;
  * Created by ISHA GUPTA on 12-07-2017.
  */
 
-public class Show_Profile extends AppCompatActivity {
+public class Show_Profile extends Fragment {
 
     TextView name;
+    View view;
 
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_user);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
 
-        name = (TextView) findViewById(R.id.textView1);
+        view=inflater.inflate(R.layout.fragment_profile1,container,false);
+
+//        name = (TextView) findViewById(R.id.textView1);
 
 //        name.append(getIntent().getStringExtra("name"));
 
+        return view;
 
     }
 

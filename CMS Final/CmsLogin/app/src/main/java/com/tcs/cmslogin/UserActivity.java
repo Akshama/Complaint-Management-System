@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +26,7 @@ public class UserActivity extends AppCompatActivity
 
     TextView name;
     LoginDataBaseAdapter loginDataBaseAdapter;
+    user users;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,10 @@ public class UserActivity extends AppCompatActivity
 
         loginDataBaseAdapter=new LoginDataBaseAdapter(this);
 
+        users= new user();
+
+        users.setName(getIntent().getStringExtra("name"));
+        users.setPassword(getIntent().getStringExtra("pass"));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +57,7 @@ public class UserActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-//        OutputScreen(R.id.nav_prof);
+        OutputScreen(R.id.nav_prof);
 
 
     }
@@ -126,12 +132,13 @@ public class UserActivity extends AppCompatActivity
         switch(ID){
 
             case R.id.nav_prof:
-//                fragment=new Show_Profile();
-//                String name2= getIntent().getStringExtra("name");
+                fragment=new Show_Profile();
 
-                Intent i3=new Intent(this,Show_Profile.class);
+//                String name2= getIntent().getStringExtra("name");
+//                Intent i3=new Intent(this,Show_Profile.class);
 //                i3.putExtra("name",name2);
-                startActivity(i3);
+//                startActivity(i3);
+
                 break;
             case R.id.nav_add:
                 String name1= getIntent().getStringExtra("name");
@@ -158,7 +165,15 @@ public class UserActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_change:
-                fragment=new Chane_Password();
+//                getFragmentManager().beginTransaction().replace(R.id.content_frame,new Chane_Password()).commit();
+//                fragment=new Chane_Password();
+                Intent i4 = new Intent(this,Chane_Password.class);
+                i4.putExtra("name",users.getName());
+                i4.putExtra("pass",users.getPassword());
+//                Log.d("AAA",users.getName());
+//                Log.d("AAA",users.getPassword());
+
+                startActivity(i4);
                 break;
             case R.id.nav_logout:
                 logout();

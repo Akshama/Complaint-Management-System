@@ -3,6 +3,8 @@ package com.tcs.cmslogin;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,47 +16,57 @@ import android.widget.Toast;
  * Created by ISHA GUPTA on 12-07-2017.
  */
 
-public class Chane_Password extends Fragment {
+public class Chane_Password extends AppCompatActivity {
 
     EditText oldpass,newpass,conpass,name;
     Button change;
     View view;
-LoginDataBaseAdapter loginDataBaseAdapter = new LoginDataBaseAdapter(getContext());
-    @Nullable
+    user users;
+
+LoginDataBaseAdapter loginDataBaseAdapter = new LoginDataBaseAdapter(this);
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_change_pass);
+       oldpass = (EditText) findViewById(R.id.old);
+        newpass = (EditText) findViewById(R.id.contact_no);
+//        conpass = (EditText) findViewById(R.id.contact_no1);
+        users= new user();
+        users.setName(getIntent().getStringExtra("name"));
+        users.setPassword(getIntent().getStringExtra("pass"));
 
-        view = inflater.inflate(R.layout.fragment_change_pass, container, false);
-       oldpass = (EditText) view.findViewById(R.id.old);
-        newpass = (EditText) view.findViewById(R.id.contact_no);
-        conpass = (EditText) view.findViewById(R.id.contact_no1);
-        name = (EditText) view.findViewById(R.id.name);
+//        Log.d("BBB",users.getPassword());
+//        Log.d("BBB",users.getName());
 
-        change = (Button) view.findViewById(R.id.submit);
+        change = (Button) findViewById(R.id.submit);
 
-
+//
+//        users.setName(getIntent().getStringExtra("name"));
+//        users.setPassword(getIntent().getStringExtra("pass"));
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if(!conpass.getText().toString().equals(newpass.getText().toString()))
-                    Toast.makeText(getActivity(), "Password does not match", Toast.LENGTH_LONG).show();
-                else
-                    loginDataBaseAdapter.updateEntryU(name.getText().toString(),conpass.getText().toString());
-                Toast.makeText(getContext(),"Password Updated",Toast.LENGTH_LONG).show();
+                if((users.getPassword()).equals(oldpass.getText().toString())){
+
+//                    if(!conpass.getText().toString().equals(newpass.getText().toString()))
+//                        Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_LONG).show();
+//                    else
+                        loginDataBaseAdapter.updateEntryU(users.getName(),newpass.getText().toString());
+                    Toast.makeText(getApplicationContext(),"Password Updated",Toast.LENGTH_LONG).show();
+                }else{
+
+                    Toast.makeText(getApplicationContext(),"Please enter the old password correctly",Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
-        return view;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("CHANGE PASSWORD");
-    }
 
 }
 

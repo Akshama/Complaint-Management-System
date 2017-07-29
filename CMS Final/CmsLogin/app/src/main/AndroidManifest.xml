@@ -47,10 +47,11 @@
             android:parentActivityName=".UserActivity"
 
             ></activity>
-        <activity android:name=".Show_Profile"
+        <activity android:name=".Chane_Password"
             android:parentActivityName=".UserActivity"
 
             ></activity>
+
 
 
 

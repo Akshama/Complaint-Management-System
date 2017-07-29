@@ -62,12 +62,12 @@ public class LoginDataBaseAdapter
         return db;
     }
 
-    public void insertEntry(String userName,String password)
+    public void insertEntry(user users)
     {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
-        newValues.put("USERNAME", userName);
-        newValues.put("PASSWORD",password);
+        newValues.put("USERNAME", users.getName());
+        newValues.put("PASSWORD",users.getPassword());
 
         // Insert the row into your table
         db.insert("LOGIN", null, newValues);
@@ -122,6 +122,7 @@ public class LoginDataBaseAdapter
 
 
     }
+
 
     public String getstatus(int id){
 
@@ -638,16 +639,20 @@ public ArrayList<String> getCompId()
 
     public void updateEntryU(String name, String newpassword) {
         // Define the updated row content.
+        db=dbHelper.getWritableDatabase();
+
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
 //        updatedValues.put("USERNAME", userName);
 
-        updatedValues.put("USERNAME", name);
+//        updatedValues.put("USERNAME", name);
 
         updatedValues.put("PASSWORD", newpassword);
 
         String where = "USERNAME = ?";
         db.update("LOGIN", updatedValues, where, new String[]{name});
+
+        db.close();
     }
 
 }

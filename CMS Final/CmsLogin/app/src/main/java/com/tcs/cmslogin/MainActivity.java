@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     LoginDataBaseAdapter loginDataBaseAdapter;
     String item;
     int position;
+    user users;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Get The Reference Of Buttons
         btnSignIn=(Button)findViewById(R.id.buttonSignIN);
         btnSignUp=(Button)findViewById(R.id.buttonSignUP);
-
+users=new user();
 
         // Set OnClick Listener on SignUp button
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 else if(item.equals("User"))
                 {
+
                      storedPassword=loginDataBaseAdapter.getSingleEntry(userName);
 
                     // check if the Stored password matches with  Password entered by user
@@ -124,8 +127,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         //Toast.makeText(MainActivity.this, "Congrats: Login Successful", Toast.LENGTH_LONG).show();
                         Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
 
+                        users.setName(userName);
+                        users.setPassword(password);
+
                         Intent intent = new Intent(MainActivity.this, UserActivity.class);
                         intent.putExtra("name",userName);
+                        intent.putExtra("pass",storedPassword);
                         //intent.putExtra("email",_email);
                         startActivity(intent);
 

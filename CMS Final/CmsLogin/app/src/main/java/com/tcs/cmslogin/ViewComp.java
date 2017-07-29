@@ -28,14 +28,14 @@ public class ViewComp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        loginDataBaseAdapter= new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
 
-        nam= (TextView) findViewById(R.id.name1);
-        email= (TextView) findViewById(R.id.email1);
-        phone= (TextView) findViewById(R.id.phone1);
-        complaint= (TextView) findViewById(R.id.comp1);
-        status=(TextView) findViewById(R.id.status1);
-        delete=(Button)findViewById(R.id.submit);
+        nam = (TextView) findViewById(R.id.name1);
+        email = (TextView) findViewById(R.id.email1);
+        phone = (TextView) findViewById(R.id.phone1);
+        complaint = (TextView) findViewById(R.id.comp1);
+        status = (TextView) findViewById(R.id.status1);
+        delete = (Button) findViewById(R.id.submit);
 
 //        nam.setText(getIntent().getStringExtra("Name"));
 //        email.setText(getIntent().getStringExtra("Email"));
@@ -59,6 +59,21 @@ public class ViewComp extends AppCompatActivity {
         phone.setText(userComplaintList.getPhone());
         complaint.setText(userComplaintList.getComplaint());
         status.setText(userComplaintList.getStatus());
+
+//        if (status.getText().toString().equalsIgnoreCase("Resolved")) {
+//
+//            delete.setVisibility(View.VISIBLE);
+//            delete.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    loginDataBaseAdapter.delete_complaint(userComplaintList.getId());
+//                }
+//            });
+//
+//        }
+
+
 //        if(loginDataBaseAdapter.inComplaint()){if(loginDataBaseAdapter.getstatus(userComplaintList.getId()).equalsIgnoreCase("Resolved")){
 //            status.setText("Resolved");
 //            delete.setVisibility(View.VISIBLE);
@@ -75,8 +90,6 @@ public class ViewComp extends AppCompatActivity {
 //            });
 //
 //        }
-
-
 
 
     }

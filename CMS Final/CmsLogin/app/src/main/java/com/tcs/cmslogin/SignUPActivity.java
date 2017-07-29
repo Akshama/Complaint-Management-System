@@ -14,7 +14,7 @@ public class SignUPActivity extends Activity
     EditText editTextUserName,editTextPassword,editTextConfirmPassword;
     Button btnCreateAccount;
     ArrayList<String> UserNames;
-
+    user users;
 
     LoginDataBaseAdapter loginDataBaseAdapter;
     @Override
@@ -28,6 +28,7 @@ public class SignUPActivity extends Activity
         loginDataBaseAdapter=loginDataBaseAdapter.open();
         UserNames=new ArrayList<>();
         UserNames=loginDataBaseAdapter.getUserName();
+        users=new user();
         // Get Refferences of Views
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
         editTextPassword=(EditText)findViewById(R.id.editTextPassword);
@@ -42,6 +43,8 @@ public class SignUPActivity extends Activity
                 String userName=editTextUserName.getText().toString();
                 String password=editTextPassword.getText().toString();
                 String confirmPassword=editTextConfirmPassword.getText().toString();
+                users.setName(userName);
+                users.setPassword(password);
 
                 // check if any of the fields are vaccant
                 if(userName.equals("")||password.equals("")||confirmPassword.equals(""))
@@ -62,7 +65,7 @@ public class SignUPActivity extends Activity
                 else
                 {
                     // Save the Data in Database
-                    loginDataBaseAdapter.insertEntry(userName, password);
+                    loginDataBaseAdapter.insertEntry(users);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
                 }
             }
