@@ -280,7 +280,7 @@ public class LoginDataBaseAdapter
         return empid;
     }
 
-    /******** METHOD TO GET THE ASSIGNED EMPLOYEE ID ***********/
+    /******** METHOD TO GET THE LIST OF ASSIGNED EMPLOYEE ID ***********/
 
     public ArrayList getAssigned_EmpId()
     {
@@ -380,7 +380,7 @@ public ArrayList<String> getCompId()
     {
         db=dbHelper.getReadableDatabase();
         ArrayList<String> comp_id=new ArrayList<>();
-        comp_id.add("Select Complaint ID");
+        comp_id.add("Select Complaint ID");//to display in textview
         Cursor cursor;
         cursor = db.rawQuery("select COMPLAINT_ID from COMPLAINT_TABLE",null);
         if(cursor.getCount()<1) // UserName Not Exist
