@@ -16,10 +16,11 @@ import java.util.List;
 public class ViewComp extends AppCompatActivity {
 
     LoginDataBaseAdapter loginDataBaseAdapter;
-    user_complaint userComplaintList;
+
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerViewlayoutManager;
     RecyclerView.Adapter viewComplaintAdapter;
+    user_complaint userComplaintList;
     TextView nam,email,phone,complaint,status;
     Button delete;
 
@@ -28,20 +29,20 @@ public class ViewComp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
 
-        loginDataBaseAdapter= new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
 
-        nam= (TextView) findViewById(R.id.name1);
-        email= (TextView) findViewById(R.id.email1);
-        phone= (TextView) findViewById(R.id.phone1);
-        complaint= (TextView) findViewById(R.id.comp1);
-        status=(TextView) findViewById(R.id.status1);
-        delete=(Button)findViewById(R.id.submit);
+        nam = (TextView) findViewById(R.id.name1);
+        email = (TextView) findViewById(R.id.email1);
+        phone = (TextView) findViewById(R.id.phone1);
+        complaint = (TextView) findViewById(R.id.comp1);
+        status = (TextView) findViewById(R.id.status1);
+        delete = (Button) findViewById(R.id.submit);
 
-        nam.setText(getIntent().getStringExtra("Name"));
-        email.setText(getIntent().getStringExtra("Email"));
-        phone.setText(getIntent().getStringExtra("Phone"));
-        complaint.setText(getIntent().getStringExtra("Complaint"));
-        status.setText("Pending");
+//        nam.setText(getIntent().getStringExtra("Name"));
+//        email.setText(getIntent().getStringExtra("Email"));
+//        phone.setText(getIntent().getStringExtra("Phone"));
+//        complaint.setText(getIntent().getStringExtra("Complaint"));
+//        status.setText("Pending");
 
 //        String status=loginDataBaseAdapter.getstatus(userComplaintList.get(position).getId());
 //        if(status=="Resolved"){
@@ -53,11 +54,27 @@ public class ViewComp extends AppCompatActivity {
 //
 //        }
 
-        userComplaintList = loginDataBaseAdapter.getcomplaint();
+        userComplaintList = loginDataBaseAdapter.getcomplaint(getIntent().getStringExtra("name"));
         nam.setText(userComplaintList.getName());
         email.setText(userComplaintList.getEmail());
         phone.setText(userComplaintList.getPhone());
         complaint.setText(userComplaintList.getComplaint());
+        status.setText(userComplaintList.getStatus());
+
+//        if (status.getText().toString().equalsIgnoreCase("Resolved")) {
+//
+//            delete.setVisibility(View.VISIBLE);
+//            delete.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    loginDataBaseAdapter.delete_complaint(userComplaintList.getId());
+//                }
+//            });
+//
+//        }
+
+
 //        if(loginDataBaseAdapter.inComplaint()){if(loginDataBaseAdapter.getstatus(userComplaintList.getId()).equalsIgnoreCase("Resolved")){
 //            status.setText("Resolved");
 //            delete.setVisibility(View.VISIBLE);
@@ -74,8 +91,6 @@ public class ViewComp extends AppCompatActivity {
 //            });
 //
 //        }
-
-
 
 
     }

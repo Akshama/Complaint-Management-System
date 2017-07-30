@@ -13,7 +13,7 @@ import java.util.List;
 public class LoginDataBaseAdapter
 {
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 24;
+    static final int DATABASE_VERSION = 25;
 
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
@@ -62,12 +62,12 @@ public class LoginDataBaseAdapter
         return db;
     }
 
-    public void insertEntry(String userName,String password)
+    public void insertEntry(user users)
     {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
-        newValues.put("USERNAME", userName);
-        newValues.put("PASSWORD",password);
+        newValues.put("USERNAME", users.getName());
+        newValues.put("PASSWORD",users.getPassword());
 
         // Insert the row into your table
         db.insert("LOGIN", null, newValues);
@@ -84,6 +84,7 @@ public class LoginDataBaseAdapter
         newValues.put("EMAILID",userComplaint.getEmail());
         newValues.put("COMPLAINT",userComplaint.getComplaint());
         newValues.put("CONTACT_NO",userComplaint.getPhone());
+        newValues.put("COMPLAINT_STATUS",userComplaint.getStatus());
 
 
         // Insert the row into your table
@@ -92,21 +93,25 @@ public class LoginDataBaseAdapter
         ///Toast.makeText(context, "Reminder Is Successfully Saved", Toast.LENGTH_LONG).show();
     }
 
-    public user_complaint getcomplaint(){
+   public user_complaint getcomplaint(String name){
 
         db= dbHelper.getReadableDatabase();
-        Cursor cursor= db.query("COMPLAINT_TABLE",new String[]{"COMPLAINT_ID","NAME","EMAILID","COMPLAINT","CONTACT_NO"},null,null,null,null,null);
+        Cursor cursor= db.query("COMPLAINT_TABLE",new String[]{"COMPLAINT_ID","NAME","EMAILID","COMPLAINT","CONTACT_NO","COMPLAINT_STATUS"},"NAME=?",new String[]{name},null,null,null);
         user_complaint userComplaint1 = new user_complaint();
 
         if(cursor.moveToFirst()) {
 
 
 
-                userComplaint1.setId(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
-                userComplaint1.setName(cursor.getString(cursor.getColumnIndex("NAME")));
-                userComplaint1.setEmail(cursor.getString(cursor.getColumnIndex("EMAILID")));
-                userComplaint1.setComplaint(cursor.getString(cursor.getColumnIndex("COMPLAINT")));
-                userComplaint1.setPhone(cursor.getString(cursor.getColumnIndex("CONTACT_NO")));
+                    userComplaint1.setId(cursor.getInt(cursor.getColumnIndex("COMPLAINT_ID")));
+                    userComplaint1.setName(cursor.getString(cursor.getColumnIndex("NAME")));
+                    userComplaint1.setEmail(cursor.getString(cursor.getColumnIndex("EMAILID")));
+                    userComplaint1.setComplaint(cursor.getString(cursor.getColumnIndex("COMPLAINT")));
+                    userComplaint1.setPhone(cursor.getString(cursor.getColumnIndex("CONTACT_NO")));
+                    userComplaint1.setStatus(cursor.getString(cursor.getColumnIndex("COMPLAINT_STATUS")));
+
+
+
 
 
 
@@ -117,7 +122,53 @@ public class LoginDataBaseAdapter
 
 
     }
+	
+	public user getuser(String name){
 
+        db= dbHelper.getReadableDatabase();
+        Cursor cursor= db.query("LOGIN",new String[]{"USERNAME","PASSWORD"},"USERNAME=?",new String[]{name},null,null,null);
+        user users = new user();
+
+        if(cursor.moveToFirst()) {
+
+
+
+            users.setName(cursor.getString(cursor.getColumnIndex("USERNAME")));
+            users.setPassword(cursor.getString(cursor.getColumnIndex("PASSWORD")));
+
+
+        }
+        cursor.close();
+        db.close();
+        return users;
+
+
+    }
+	
+	/******** METHOD TO GET THE NAME OF USER***********/
+
+    public ArrayList getUserName()
+    {
+        db=dbHelper.getReadableDatabase();
+        ArrayList<String> user_name=new ArrayList<>();
+        Cursor cursor;
+        cursor = db.rawQuery("select USERNAME from LOGIN",null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return null;
+        }
+        cursor.moveToFirst();
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String name=cursor.getString(cursor.getColumnIndex("USERNAME"));
+            user_name.add(name);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return user_name;
+    }
+
+	
     public String getstatus(int id){
 
         db= dbHelper.getReadableDatabase();
@@ -145,15 +196,19 @@ public class LoginDataBaseAdapter
         db.close();
     }
 
-    public boolean inComplaint(){
+   public boolean inComplaint(String name){
         db = dbHelper.getReadableDatabase();
 
         Boolean isPresent=false;
 
-        Cursor cursor=db.query("COMPLAINT_TABLE", new String[]{"COMPLAINT_ID"},null, null, null, null, null);
+        Cursor cursor=db.query("COMPLAINT_TABLE", new String[]{"COMPLAINT_ID"},"NAME=?", new String[]{name}, null, null, null);
 
         if(cursor.moveToFirst()){
-            isPresent=true;
+
+
+                isPresent=true;
+
+
 
         }
         cursor.close();
@@ -163,8 +218,8 @@ public class LoginDataBaseAdapter
     }
 
 
-
-    public void insertEntryE(String empid,String name,String emailid,String pass,String dept)
+   
+   public void insertEntryE(String empid,String name,String emailid,String pass,String dept)
     {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
@@ -629,6 +684,20 @@ public ArrayList<String> getCompId()
         return password;
     }
 
+    public String getSingleEntryU(String userName)
+    {
+        Cursor cursor=db.query("LOGIN", null, " USERNAME=?", new String[]{userName}, null, null, null);
+        if(cursor.getCount()<1) // UserName Not Exist
+        {
+            cursor.close();
+            return "NOT EXIST";
+        }
+        cursor.moveToFirst();
+        String password= cursor.getString(cursor.getColumnIndex("PASSWORD"));
+        cursor.close();
+        return password;
+    }
+
 
 
     public void  updateEntry(String userName,String password)
@@ -666,6 +735,18 @@ public ArrayList<String> getCompId()
         db.update("E_LOGIN",updatedValues, where, new String[]{userName});
     }
 
+    public void  updateEntryU_pass(String userName,String password)
+    {
+        // Define the updated row content.
+        ContentValues updatedValues = new ContentValues();
+        // Assign values for each row.
+
+        updatedValues.put("PASSWORD",password);
+
+        String where="USERNAME = ?";
+        db.update("LOGIN",updatedValues, where, new String[]{userName});
+    }
+
     public void  updateEntryE(String id,String name,String emailid,String department)
     {
         // Define the updated row content.
@@ -681,16 +762,20 @@ public ArrayList<String> getCompId()
 
     public void updateEntryU(String name, String newpassword) {
         // Define the updated row content.
+        db=dbHelper.getWritableDatabase();
+
         ContentValues updatedValues = new ContentValues();
         // Assign values for each row.
 //        updatedValues.put("USERNAME", userName);
 
-        updatedValues.put("USERNAME", name);
+//        updatedValues.put("USERNAME", name);
 
         updatedValues.put("PASSWORD", newpassword);
 
         String where = "USERNAME = ?";
         db.update("LOGIN", updatedValues, where, new String[]{name});
+
+        db.close();
     }
 
     public void  updateStatus(String status, String id)
